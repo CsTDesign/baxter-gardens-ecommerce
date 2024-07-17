@@ -27,7 +27,7 @@ export default async function BagRoute() {
 
   return (
     <div className="max-w-2xl min-h-[55vh] mt-10 mx-auto">
-      {cart?.items.length === 0 ? (
+      {!cart || !cart.items ? (
         <div className="border border-dashed flex flex-col items-center justify-center min-h-[400px] mt-20 p-8 rounded-lg text-center">
           <Image
             alt="Empty cart"

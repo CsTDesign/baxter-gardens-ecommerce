@@ -1,3 +1,4 @@
+import prisma from "@/app/lib/db";
 import {
   Card,
   CardContent,
@@ -14,7 +15,32 @@ import {
   TableRow
 } from "@/components/ui/table";
 
-export default function OrdersPage() {
+async function getData() {
+  const data = await prisma.order.findMany({
+    select: {
+      amount: true,
+      createdAt: true,
+      status: true,
+      id: true,
+      User: {
+        select: {
+          firstName: true,
+          email: true,
+          profileImage: true
+        }
+      }
+    },
+    orderBy: {
+      createdAt: "desc"
+    }
+  })
+
+  return data
+}
+
+export default async function OrdersPage() {
+  const data = await getData()
+  
   return (
     <Card>
       <CardHeader className="px-7">
@@ -33,16 +59,24 @@ export default function OrdersPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>
-                <p className="font-medium">Cory Taylor</p>
-                <p className="hidden md:flex text-muted-foreground text-sm">official.cstdesign@gmail.com</p>
-              </TableCell>
-              <TableCell>Sale</TableCell>
-              <TableCell>Success</TableCell>
-              <TableCell>2024-06-15</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
-            </TableRow>
+            {data.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell>
+                  <p className="font-medium">{item.User?.firstName}</p>
+                  <p className="hidden md:flex text-muted-foreground text-sm">
+                    {item.User?.email}
+                  </p>
+                </TableCell>
+                <TableCell>Order</TableCell>
+                <TableCell>{item.status}</TableCell>
+                <TableCell>
+                  {new Intl.DateTimeFormat("en-US").format(item.createdAt)}
+                </TableCell>
+                <TableCell className="text-right">
+                  ${new Intl.NumberFormat("en-US").format(item.amount / 100)}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </CardContent>
