@@ -54,7 +54,6 @@ const data = await getData()
             <Chart data={data} />
           </CardContent>
         </Card>
-        
         <RecentSales />
       </div>
     </>
