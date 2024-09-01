@@ -1,8 +1,8 @@
 "use client"
 
-import { createProduct } from "@/app/actions";
-import { UploadDropzone } from "@/app/lib/uploadthing";
-import { Button } from "@/components/ui/button";
+import { createProduct } from "@/app/actions"
+import { UploadDropzone } from "@/app/lib/uploadthing"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -10,34 +10,47 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
-import { ChevronLeft, XIcon } from "lucide-react";
-import Link from "next/link";
-import { useFormState } from "react-dom";
+} from "@/components/ui/select"
+import { Switch } from "@/components/ui/switch"
+import { Textarea } from "@/components/ui/textarea"
+import {
+  ChevronLeft,
+  XIcon
+} from "lucide-react"
+import Link from "next/link"
+import { useFormState } from "react-dom"
 import { useForm } from "@conform-to/react"
-import { parseWithZod } from "@conform-to/zod";
-import { productSchema } from "@/app/lib/zodSchemas";
-import { useState } from "react";
-import Image from "next/image";
-import { categories } from "@/app/lib/categories";
-import { SubmitButton } from "@/app/components/SubmitButtons";
+import { parseWithZod } from "@conform-to/zod"
+import { productSchema } from "@/app/lib/zodSchemas"
+import { useState } from "react"
+import Image from "next/image"
+import { categories } from "@/app/lib/categories"
+import { SubmitButton } from "@/app/components/SubmitButtons"
 
 export default function ProductCreateRoute() {
-  const [images, setImages] = useState<string[]>([])
+  const [
+    images,
+    setImages
+  ] = useState<string[]>([])
   
-  const [lastResult, action] = useFormState(createProduct, undefined)
-  const [form, fields] = useForm({
+  const [
+    lastResult,
+    action
+  ] = useFormState(createProduct, undefined)
+  
+  const [
+    form,
+    fields
+  ] = useForm({
     lastResult,
     onValidate({ formData }) {
       return parseWithZod(formData, {
@@ -69,7 +82,7 @@ export default function ProductCreateRoute() {
 
       <Card className="mt-5">
         <CardHeader>
-          <CardTitle>PRODUCT DETAILS</CardTitle>
+          <CardTitle className="uppercase">Product Details</CardTitle>
           <CardDescription>Create your product here</CardDescription>
         </CardHeader>
         <CardContent>
@@ -145,14 +158,16 @@ export default function ProductCreateRoute() {
                   <SelectValue placeholder="Select category" />
                 </SelectTrigger>
                 <SelectContent>
-                  {categories.map((category) => (
-                    <SelectItem
-                      key={category.id}
-                      value={category.name}
-                    >
-                      {category.title}
-                    </SelectItem>
-                  ))}
+                  {
+                    categories.map((category) => (
+                      <SelectItem
+                        key={category.id}
+                        value={category.name}
+                      >
+                        {category.title}
+                      </SelectItem>
+                    ))
+                  }
                 </SelectContent>
               </Select>
               <p className="text-red-500">{fields.category.errors}</p>
@@ -166,42 +181,48 @@ export default function ProductCreateRoute() {
                 type="hidden"
                 value={images}
               />
-              {images.length > 0 ? (
-                <div className="flex gap-5">
-                  {images.map((image, index) => (
-                    <div
-                      className="h-[100px] relative w-[100px]"
-                      key={index}
-                    >
-                      <Image
-                        alt="Product image"
-                        className="border h-full object-cover rounded-lg w-full"
-                        height={100}
-                        src={image}
-                        width={100}
-                      />
-                      <button 
-                        className="absolute bg-red-500 p-2 -right-3 rounded-lg text-white -top-3"
-                        onClick={() => handleDelete(index)}
-                        type="button"
-                      >
-                        <XIcon className="h-3 w-3" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <UploadDropzone
-                  endpoint="imageUploader"
-                  onClientUploadComplete={(res) => {
-                    setImages(res.map((r) => r.url))
-                  }}
-                  onUploadError={() => {
-                    alert("An error occurred")
-                  }}
-                />
-              )}
-              <p className="text-red-500">{fields.images.errors}</p>
+              {
+                images.length > 0 ? (
+                  <div className="flex gap-5">
+                    {
+                      images.map((image, index) => (
+                        <div
+                          className="h-[100px] relative w-[100px]"
+                          key={index}
+                        >
+                          <Image
+                            alt="Product image"
+                            className="border h-full object-cover rounded-lg w-full"
+                            height={100}
+                            src={image}
+                            width={100}
+                          />
+                          <button 
+                            className="absolute bg-red-500 p-2 -right-3 rounded-lg text-white -top-3"
+                            onClick={() => handleDelete(index)}
+                            type="button"
+                          >
+                            <XIcon className="h-3 w-3" />
+                          </button>
+                        </div>
+                      ))
+                    }
+                  </div>
+                ) : (
+                  <UploadDropzone
+                    endpoint="imageUploader"
+                    onClientUploadComplete={(res) => {
+                      setImages(res.map((r) => r.url))
+                    }}
+                    onUploadError={() => {
+                      alert("An error occurred")
+                    }}
+                  />
+                )
+              }
+              <p className="text-red-500">
+                {fields.images.errors}
+              </p>
             </div>
           </div>
         </CardContent>

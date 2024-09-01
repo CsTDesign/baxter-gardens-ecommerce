@@ -1,12 +1,16 @@
 import { deleteBanner } from "@/app/actions";
 import { SubmitButton } from "@/app/components/SubmitButtons";
 import { Button } from "@/components/ui/button";
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "@/components/ui/card";
 import Link from "next/link";
 
-export default function DeleteBannerRoute({
-  params
-}: {
+export default function DeleteBannerRoute({ params }: {
   params: {
     id: string
   }
@@ -25,7 +29,9 @@ export default function DeleteBannerRoute({
             asChild
             variant="secondary"
           >
-            <Link href="/dashboard/banner">Cancel</Link>
+            <Link href="/dashboard/banner">
+              Cancel
+            </Link>
           </Button>
           <form action={deleteBanner}>
             <input

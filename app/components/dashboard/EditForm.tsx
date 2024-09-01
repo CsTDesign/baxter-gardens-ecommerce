@@ -22,7 +22,10 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { ChevronLeft, XIcon } from "lucide-react";
+import {
+  ChevronLeft,
+  XIcon
+} from "lucide-react";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { useForm } from "@conform-to/react"
@@ -48,10 +51,20 @@ interface iAppProps {
 }
 
 export function EditForm({ data }: iAppProps) {
-  const [images, setImages] = useState<string[]>(data.images)
+  const [
+    images,
+    setImages
+  ] = useState<string[]>(data.images)
   
-  const [lastResult, action] = useFormState(editProduct, undefined)
-  const [form, fields] = useForm({
+  const [
+    lastResult,
+    action
+  ] = useFormState(editProduct, undefined)
+  
+  const [
+    form,
+    fields
+  ] = useForm({
     lastResult,
     onValidate({ formData }) {
       return parseWithZod(formData, {
@@ -78,7 +91,11 @@ export function EditForm({ data }: iAppProps) {
         value={data.id}
       />
       <div className="flex gap-4 items-center">
-        <Button asChild size="icon" variant="outline">
+        <Button
+          asChild
+          size="icon"
+          variant="outline"
+        >
           <Link href="/dashboard/products">
             <ChevronLeft className="h-4 w-4" />
           </Link>
@@ -88,8 +105,10 @@ export function EditForm({ data }: iAppProps) {
 
       <Card className="mt-5">
         <CardHeader>
-          <CardTitle>PRODUCT DETAILS</CardTitle>
-          <CardDescription>Update your existing product here</CardDescription>
+          <CardTitle className="uppercase">Product Details</CardTitle>
+          <CardDescription>
+            Update your existing product here
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6">
@@ -164,14 +183,16 @@ export function EditForm({ data }: iAppProps) {
                   <SelectValue placeholder="Select category" />
                 </SelectTrigger>
                 <SelectContent>
-                  {categories.map((category) => (
-                    <SelectItem
-                      key={category.id}
-                      value={category.name}
-                    >
-                      {category.title}
-                    </SelectItem>
-                  ))}
+                  {
+                    categories.map((category) => (
+                      <SelectItem
+                        key={category.id}
+                        value={category.name}
+                      >
+                        {category.title}
+                      </SelectItem>
+                    ))
+                  }
                 </SelectContent>
               </Select>
               <p className="text-red-500">{fields.category.errors}</p>
@@ -185,41 +206,45 @@ export function EditForm({ data }: iAppProps) {
                 type="hidden"
                 value={images}
               />
-              {images.length > 0 ? (
-                <div className="flex gap-5">
-                  {images.map((image, index) => (
-                    <div
-                      className="h-[100px] relative w-[100px]"
-                      key={index}
-                    >
-                      <Image
-                        alt="Product image"
-                        className="border h-full object-cover rounded-lg w-full"
-                        height={100}
-                        src={image}
-                        width={100}
-                      />
-                      <button 
-                        className="absolute bg-red-500 p-2 -right-3 rounded-lg text-white -top-3"
-                        onClick={() => handleDelete(index)}
-                        type="button"
-                      >
-                        <XIcon className="h-3 w-3" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <UploadDropzone
-                  endpoint="imageUploader"
-                  onClientUploadComplete={(res) => {
-                    setImages(res.map((r) => r.url))
-                  }}
-                  onUploadError={() => {
-                    alert("An error occurred")
-                  }}
-                />
-              )}
+              {
+                images.length > 0 ? (
+                  <div className="flex gap-5">
+                    {
+                      images.map((image, index) => (
+                        <div
+                          className="h-[100px] relative w-[100px]"
+                          key={index}
+                        >
+                          <Image
+                            alt="Product image"
+                            className="border h-full object-cover rounded-lg w-full"
+                            height={100}
+                            src={image}
+                            width={100}
+                          />
+                          <button 
+                            className="absolute bg-red-500 p-2 -right-3 rounded-lg text-white -top-3"
+                            onClick={() => handleDelete(index)}
+                            type="button"
+                          >
+                            <XIcon className="h-3 w-3" />
+                          </button>
+                        </div>
+                      ))
+                    }
+                  </div>
+                ) : (
+                  <UploadDropzone
+                    endpoint="imageUploader"
+                    onClientUploadComplete={(res) => {
+                      setImages(res.map((r) => r.url))
+                    }}
+                    onUploadError={() => {
+                      alert("An error occurred")
+                    }}
+                  />
+                )
+              }
               <p className="text-red-500">{fields.images.errors}</p>
             </div>
           </div>

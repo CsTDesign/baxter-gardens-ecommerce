@@ -1,12 +1,12 @@
-import Link from "next/link";
-import { NavbarLinks } from "./NavbarLinks";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { ShoppingCartIcon } from "lucide-react";
-import { UserDropDown } from "./UserDropdown";
-import { Button } from "@/components/ui/button";
+import Link from "next/link"
+import { NavbarLinks } from "./NavbarLinks"
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
+import { ShoppingCartIcon } from "lucide-react"
+import { UserDropDown } from "./UserDropdown"
+import { Button } from "@/components/ui/button"
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components"
-import { redis } from "@/app/lib/redis";
-import { Cart } from "@/app/lib/interfaces";
+import { redis } from "@/app/lib/redis"
+import { Cart } from "@/app/lib/interfaces"
 
 export async function Navbar() {
   const { getUser } = getKindeServerSession()
@@ -29,43 +29,45 @@ export async function Navbar() {
       </div>
 
       <div className="flex items-center">
-        {user ? (
-          <>
-            <Link
-              className="flex group items-center mr-2 p-2"
-              href="/bag"
-            >
-              <ShoppingCartIcon className="group-hover:text-gray-500 h-6 text-gray-400 w-6" />
-              <span className="font-medium group-hover:text-gray-800 ml-2 text-gray-700 text-sm">
-                {total}
-              </span>
-            </Link>
+        {
+          user ? (
+            <>
+              <Link
+                className="flex group items-center mr-2 p-2"
+                href="/bag"
+              >
+                <ShoppingCartIcon className="group-hover:text-gray-500 h-6 text-gray-400 w-6" />
+                <span className="font-medium group-hover:text-gray-800 ml-2 text-gray-700 text-sm">
+                  {total}
+                </span>
+              </Link>
 
-            <UserDropDown
-              email={user.email as string}
-              name={user.given_name as string}
-              userImage={
-                user.picture ?? `https://avatar.vercel.sh/${user.given_name}`
-              }
-            />
-          </>
-        ) : (
-          <div className="hidden md:flex md:flex-1 md:items-center md:justify-end md:space-x-2">
-            <Button
-              asChild
-              variant="ghost"
-            >
-              <LoginLink>Sign In</LoginLink>
-            </Button>
-            <span className="bg-gray-200 h-6 w-px"></span>
-            <Button
-              asChild
-              variant="ghost"
-            >
-              <RegisterLink>Create Account</RegisterLink>
-            </Button>
-          </div>
-        )}
+              <UserDropDown
+                email={user.email as string}
+                name={user.given_name as string}
+                userImage={
+                  user.picture ?? `https://avatar.vercel.sh/${user.given_name}`
+                }
+              />
+            </>
+          ) : (
+            <div className="hidden md:flex md:flex-1 md:items-center md:justify-end md:space-x-2">
+              <Button
+                asChild
+                variant="ghost"
+              >
+                <LoginLink>Sign In</LoginLink>
+              </Button>
+              <span className="bg-gray-200 h-6 w-px"></span>
+              <Button
+                asChild
+                variant="ghost"
+              >
+                <RegisterLink>Create Account</RegisterLink>
+              </Button>
+            </div>
+          )
+        }
       </div>
     </nav>
   )

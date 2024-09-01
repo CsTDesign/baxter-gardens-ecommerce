@@ -1,11 +1,11 @@
-import prisma from "@/app/lib/db";
+import prisma from "@/app/lib/db"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   TableHead,
   TableHeader,
   TableRow
-} from "@/components/ui/table";
+} from "@/components/ui/table"
 
 async function getData() {
   const data = await prisma.order.findMany({
@@ -44,7 +44,7 @@ export default async function OrdersPage() {
   return (
     <Card>
       <CardHeader className="px-7">
-        <CardTitle>ORDERS</CardTitle>
+        <CardTitle className="uppercase">Orders</CardTitle>
         <CardDescription>Recent orders from BG Nurser-E</CardDescription>
       </CardHeader>
       <CardContent>
@@ -59,24 +59,32 @@ export default async function OrdersPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {data.map((item) => (
-              <TableRow key={item.id}>
-                <TableCell>
-                  <p className="font-medium">{item.User?.firstName}</p>
-                  <p className="hidden md:flex text-muted-foreground text-sm">
-                    {item.User?.email}
-                  </p>
-                </TableCell>
-                <TableCell>Order</TableCell>
-                <TableCell>{item.status}</TableCell>
-                <TableCell>
-                  {new Intl.DateTimeFormat("en-US").format(item.createdAt)}
-                </TableCell>
-                <TableCell className="text-right">
-                  ${new Intl.NumberFormat("en-US").format(item.amount / 100)}
-                </TableCell>
-              </TableRow>
-            ))}
+            {
+              data.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell>
+                    <p className="font-medium">{item.User?.firstName}</p>
+                    <p className="hidden md:flex text-muted-foreground text-sm">
+                      {item.User?.email}
+                    </p>
+                  </TableCell>
+                  <TableCell>Order</TableCell>
+                  <TableCell>{item.status}</TableCell>
+                  <TableCell>
+                    {
+                      new Intl.DateTimeFormat("en-US")
+                      .format(item.createdAt)
+                    }
+                  </TableCell>
+                  <TableCell className="text-right">
+                    ${
+                      new Intl.NumberFormat("en-US")
+                      .format(item.amount / 100)
+                    }
+                  </TableCell>
+                </TableRow>
+              ))
+            }
           </TableBody>
         </Table>
       </CardContent>

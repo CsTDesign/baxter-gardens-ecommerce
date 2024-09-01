@@ -1,5 +1,8 @@
 import prisma from "@/app/lib/db"
-import { LoadingProductCart, ProductCard } from "./ProductCard"
+import {
+  LoadingProductCart,
+  ProductCard
+} from "./ProductCard"
 import { Suspense } from "react"
 
 async function getData() {
@@ -27,7 +30,9 @@ async function getData() {
 export function FeaturedProducts() {
   return (
     <>
-      <h2 className="font-extrabold text-2xl tracking-tight">Featured Items</h2>
+      <h2 className="font-extrabold text-2xl tracking-tight">
+        Featured Items
+      </h2>
       <Suspense fallback={<LoadingRows />}>
         <LoadFeaturedProducts />
       </Suspense>
@@ -40,12 +45,14 @@ async function LoadFeaturedProducts() {
 
   return (
     <div className="gap-5 grid lg:grid-cols-3 mt-5 sm:grid-cols-2">
-      {data.map((item) => (
-        <ProductCard
-          key={item.id}
-          item={item}
-        />
-      ))}
+      {
+        data.map((item) => (
+          <ProductCard
+            key={item.id}
+            item={item}
+          />
+        ))
+      }
     </div>
   )
 }

@@ -1,8 +1,15 @@
 import { ReactNode } from "react"
 import { DashboardNavigation } from "../components/dashboard/DashboardNavigation"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger
+} from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
-import { CircleUser, MenuIcon } from "lucide-react"
+import {
+  CircleUser,
+  MenuIcon
+} from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,

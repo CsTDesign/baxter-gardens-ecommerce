@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel"
 import { Skeleton } from "@/components/ui/skeleton"
 import Image from "next/image"
 import Link from "next/link"
@@ -19,18 +25,20 @@ export function ProductCard({ item }: iAppProps) {
     <div className="rounded-lg">
       <Carousel className="mx-auto w-full">
         <CarouselContent>
-          {item.images.map((item, index) => (
-            <CarouselItem key={index}>
-              <div className="h-[330px] relative">
-                <Image
-                  alt="Product image"
-                  className="h-full object-center object-cover rounded-lg w-full"
-                  fill
-                  src={item}
-                />
-              </div>
-            </CarouselItem>
-          ))}
+          {
+            item.images.map((item, index) => (
+              <CarouselItem key={index}>
+                <div className="h-[330px] relative">
+                  <Image
+                    alt="Product image"
+                    className="h-full object-center object-cover rounded-lg w-full"
+                    fill
+                    src={item}
+                  />
+                </div>
+              </CarouselItem>
+            ))
+          }
         </CarouselContent>
         <CarouselPrevious className="ml-16" />
         <CarouselNext className="mr-16" />
@@ -48,7 +56,11 @@ export function ProductCard({ item }: iAppProps) {
           asChild
           className="mt-5 w-full"
         >
-          <Link href={`/product/${item.id}`}>Learn More!</Link>
+          <Link href={
+            `/product/${item.id}`
+          }>
+            Learn More!
+          </Link>
         </Button>
       </div>
     </div>

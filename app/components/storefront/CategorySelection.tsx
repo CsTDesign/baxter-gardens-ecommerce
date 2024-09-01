@@ -29,8 +29,12 @@ export function CategoriesSelection() {
           <div className="bg-gradient-to-b from-transparent opacity-55 to-black" />
           <div className="flex items-end p-6">
             <Link href="/products/all">
-              <h3 className="font-semibold text-white">All Products</h3>
-              <p className="mt-1 text-sm text-white">Shop Now</p>
+              <h3 className="font-semibold text-white">
+                All Products
+              </h3>
+              <p className="mt-1 text-sm text-white">
+                Shop Now
+              </p>
             </Link>
           </div>
         </div>
@@ -44,8 +48,12 @@ export function CategoriesSelection() {
           <div className="bg-gradient-to-b from-transparent opacity-55 sm:absolute sm:inset-0 to-black" />
           <div className="flex items-end p-6 sm:absolute sm:inset-0">
             <Link href="/products/landscape">
-              <h3 className="font-semibold text-white">Landscape Products</h3>
-              <p className="mt-1 text-sm text-white">Shop Now</p>
+              <h3 className="font-semibold text-white">
+                Landscape Products
+              </h3>
+              <p className="mt-1 text-sm text-white">
+                Shop Now
+              </p>
             </Link>
           </div>
         </div>
@@ -59,8 +67,12 @@ export function CategoriesSelection() {
           <div className="bg-gradient-to-b from-transparent opacity-55 sm:absolute sm:inset-0 to-black" />
           <div className="flex items-end p-6 sm:absolute sm:inset-0">
             <Link href="/products/maintenance">
-              <h3 className="font-semibold text-white">Maintenance Products</h3>
-              <p className="mt-1 text-sm text-white">Shop Now</p>
+              <h3 className="font-semibold text-white">
+                Maintenance Products
+              </h3>
+              <p className="mt-1 text-sm text-white">
+                Shop Now
+              </p>
             </Link>
           </div>
         </div>

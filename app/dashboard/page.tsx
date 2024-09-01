@@ -4,11 +4,11 @@ import {
   CardDescription,
   CardHeader,
   CardTitle
-} from "@/components/ui/card";
-import { DashboardStats } from "../components/dashboard/DashboardStats";
-import { RecentSales } from "../components/dashboard/RecentSales";
-import { Chart } from "../components/dashboard/Chart";
-import prisma from "../lib/db";
+} from "@/components/ui/card"
+import { DashboardStats } from "../components/dashboard/DashboardStats"
+import { RecentSales } from "../components/dashboard/RecentSales"
+import { Chart } from "../components/dashboard/Chart"
+import prisma from "../lib/db"
 
 async function getData() {
   const now = new Date()
@@ -47,7 +47,7 @@ const data = await getData()
       <div className="gap-4 grid lg:grid-cols-2 md:gap-8 mt-10 xl:grid-cols-3">
         <Card className="xl:col-span-2">
           <CardHeader>
-            <CardTitle>TRANSACTIONS</CardTitle>
+            <CardTitle className="uppercase">Transactions</CardTitle>
             <CardDescription>Recent transactions from last 7 days</CardDescription>
           </CardHeader>
           <CardContent>

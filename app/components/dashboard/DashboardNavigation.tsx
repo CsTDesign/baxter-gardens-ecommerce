@@ -28,17 +28,22 @@ export function DashboardNavigation() {
   
   return (
     <>
-      {links.map((link) => (
-        <Link
-          className={cn(
-            link.href === pathname ? "text-green-500" : "hover:text-foreground text-muted-foreground"
-          )}
-          href={link.href}
-          key={link.href}
-        >
-          {link.name}
-        </Link>
-      ))}
+      {
+        links.map((link) => (
+          <Link
+            className={
+              cn(link.href === pathname
+                ? "text-green-500"
+                : "hover:text-foreground text-muted-foreground"
+              )
+            }
+            href={link.href}
+            key={link.href}
+          >
+            {link.name}
+          </Link>
+        ))
+      }
     </>
   )
 }

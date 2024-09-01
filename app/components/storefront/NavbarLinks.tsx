@@ -37,20 +37,24 @@ export function NavbarLinks() {
 
   return (
     <div className="gap-x-2 hidden items-center justify-center md:flex ml-8">
-      {navbarLinks.map((item) => (
-        <Link
-          className={cn(
-            location === item.href
-              ? "bg-primary/10"
-              : "hover: bg-muted hover:bg-opacity-75",
-            "font-medium group p-2 rounded-md"
-          )}
-          href={item.href}
-          key={item.id}
-        >
-          {item.name}
-        </Link>
-      ))}
+      {
+        navbarLinks.map((item) => (
+          <Link
+            className={
+              cn(
+                location === item.href
+                  ? "bg-primary/10"
+                  : "hover: bg-muted hover:bg-opacity-75",
+                "font-medium group p-2 rounded-md"
+              )
+            }
+            href={item.href}
+            key={item.id}
+          >
+            {item.name}
+          </Link>
+        ))
+      }
     </div>
   )
 }

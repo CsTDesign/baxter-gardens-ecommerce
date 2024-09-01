@@ -24,10 +24,20 @@ import { useState } from "react";
 import { useFormState } from "react-dom";
 
 export default function BannerRoute() {
-  const [image, setImages] = useState<string | undefined>(undefined)
-  const [lastResult, action] = useFormState(createBanner, undefined)
+  const [
+    image,
+    setImages
+  ] = useState<string | undefined>(undefined)
   
-  const [form, fields] = useForm({
+  const [
+    lastResult,
+    action
+  ] = useFormState(createBanner, undefined)
+  
+  const [
+    form,
+    fields
+  ] = useForm({
     lastResult,
     onValidate({ formData }) {
       return parseWithZod(formData, {
@@ -54,12 +64,14 @@ export default function BannerRoute() {
             <ChevronLeft className="h-4 w-4" />
           </Link>
         </Button>
-        <h1 className="font-semibold text-xl tracking-tight">New Banner</h1>
+        <h1 className="font-semibold text-xl tracking-tight">
+          New Banner
+        </h1>
       </div>
 
       <Card className="mt-5">
         <CardHeader>
-          <CardTitle>BANNER DETAILS</CardTitle>
+          <CardTitle className="uppercase">Banner Details</CardTitle>
           <CardDescription>Create your new banner here</CardDescription>
         </CardHeader>
         <CardContent>
@@ -84,26 +96,30 @@ export default function BannerRoute() {
                 type="hidden"
                 value={image}
               />
-              {image !== undefined ? (
-                <Image
-                  alt="Product image"
-                  className="border h-[200px] object-cover rounded-lg w-[200px]"
-                  height={200}
-                  src={image}
-                  width={200}
-                />
-              ) : (
-                <UploadDropzone
-                  endpoint="bannerImageRoute"
-                  onClientUploadComplete={(res) => {
-                    setImages(res[0].url)
-                  }}
-                  onUploadError={() => {
-                    alert("An error occurred.")
-                  }}
-                />
-              )}
-              <p className="text-red-500">{fields.imageString.errors}</p>
+              {
+                image !== undefined ? (
+                  <Image
+                    alt="Product image"
+                    className="border h-[200px] object-cover rounded-lg w-[200px]"
+                    height={200}
+                    src={image}
+                    width={200}
+                  />
+                ) : (
+                  <UploadDropzone
+                    endpoint="bannerImageRoute"
+                    onClientUploadComplete={(res) => {
+                      setImages(res[0].url)
+                    }}
+                    onUploadError={() => {
+                      alert("An error occurred.")
+                    }}
+                  />
+                )
+              }
+              <p className="text-red-500">
+                {fields.imageString.errors}
+              </p>
             </div>
           </div>
         </CardContent>

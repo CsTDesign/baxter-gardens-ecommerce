@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,7 +7,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components"
 
 interface iAppProps {
@@ -17,7 +17,9 @@ interface iAppProps {
 }
 
 export function UserDropDown({
-  email, name, userImage
+  email,
+  name,
+  userImage
 }: iAppProps) {
   return (
     <DropdownMenu>
@@ -41,7 +43,7 @@ export function UserDropDown({
         forceMount
       >
         <DropdownMenuLabel className="flex flex-col space-y-1">
-          <p className="font-meadium leading-none text-sm">{name}</p>
+          <p className="font-medium leading-none text-sm">{name}</p>
           <p className="leading-none text-muted-foreground text-xs">{email}</p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

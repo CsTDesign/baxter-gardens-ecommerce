@@ -2,7 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight
+} from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -11,7 +14,10 @@ interface iAppProps {
 }
 
 export function ImageSlider({ images }: iAppProps) {
-  const [mainImageIndex, setMainImageIndex] = useState(0)
+  const [
+    mainImageIndex,
+    setMainImageIndex
+  ] = useState(0)
 
   function handlePreviousClick() {
     setMainImageIndex((prevIndex) => 
@@ -61,26 +67,30 @@ export function ImageSlider({ images }: iAppProps) {
       </div>
 
       <div className="gap-4 grid grid-cols-5">
-        {images.map((image, index) => (
-          <div
-            className={cn(
-              index === mainImageIndex
-                ? "border-2 border-primary"
-                : "border border-gray-200",
-                "cursor-pointer overflow-hidden relative rounded-lg"
-            )}
-            key={index}
-            onClick={() => handleImageClick(index)}
-          >
-            <Image
-              alt="Product image"
-              className="h-[100px] object-cover w-[100px]"
-              height={100}
-              src={image}
-              width={100}
-            />
-          </div>
-        ))}
+        {
+          images.map((image, index) => (
+            <div
+              className={
+                cn(
+                  index === mainImageIndex
+                    ? "border-2 border-primary"
+                    : "border border-gray-200",
+                  "cursor-pointer overflow-hidden relative rounded-lg"
+                )
+              }
+              key={index}
+              onClick={() => handleImageClick(index)}
+            >
+              <Image
+                alt="Product image"
+                className="h-[100px] object-cover w-[100px]"
+                height={100}
+                src={image}
+                width={100}
+              />
+            </div>
+          ))
+        }
       </div>
     </div>
   )
