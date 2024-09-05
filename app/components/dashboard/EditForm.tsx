@@ -1,8 +1,8 @@
 "use client"
 
-import { createProduct, editProduct } from "@/app/actions";
-import { UploadDropzone } from "@/app/lib/uploadthing";
-import { Button } from "@/components/ui/button";
+import { createProduct, editProduct } from "@/app/actions"
+import { UploadDropzone } from "@/app/lib/uploadthing"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -10,32 +10,32 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
+} from "@/components/ui/select"
+import { Switch } from "@/components/ui/switch"
+import { Textarea } from "@/components/ui/textarea"
 import {
   ChevronLeft,
   XIcon
-} from "lucide-react";
-import Link from "next/link";
-import { useFormState } from "react-dom";
+} from "lucide-react"
+import Link from "next/link"
+import { useFormState } from "react-dom"
 import { useForm } from "@conform-to/react"
-import { parseWithZod } from "@conform-to/zod";
-import { productSchema } from "@/app/lib/zodSchemas";
-import { useState } from "react";
-import Image from "next/image";
-import { categories } from "@/app/lib/categories";
-import { SubmitButton } from "@/app/components/SubmitButtons";
-import { type $Enums } from "@prisma/client";
+import { parseWithZod } from "@conform-to/zod"
+import { productSchema } from "@/app/lib/zodSchemas"
+import { useState } from "react"
+import Image from "next/image"
+import { categories } from "@/app/lib/categories"
+import { SubmitButton } from "@/app/components/SubmitButtons"
+import { type $Enums } from "@prisma/client"
 
 interface iAppProps {
   data: {

@@ -46,7 +46,11 @@ export default async function ProductIdRoute({
           <h1 className="font-extrabold text-3xl text-gray-900 tracking-tight">
             {data.name}
           </h1>
-          <p className="mt-2 text-3xl text-gray-900">${data.price}</p>
+
+          <p className="mt-2 text-3xl text-gray-900">
+            ${data.price}
+          </p>
+
           <div className="flex gap-1 items-center mt-3">
             <StarIcon className="fill-yellow-500 h-4 text-yellow-500 w-4" />
             <StarIcon className="fill-yellow-500 h-4 text-yellow-500 w-4" />
@@ -54,7 +58,10 @@ export default async function ProductIdRoute({
             <StarIcon className="fill-yellow-500 h-4 text-yellow-500 w-4" />
             <StarIcon className="fill-yellow-500 h-4 text-yellow-500 w-4" />
           </div>
-          <p className="mt-6 text-base text-gray-700">{data.description}</p>
+          
+          <p className="mt-6 text-base text-gray-700">
+            {data.description}
+          </p>
           
           <form action={addProductToShoppingCart}>
             <ShoppingCartButton />

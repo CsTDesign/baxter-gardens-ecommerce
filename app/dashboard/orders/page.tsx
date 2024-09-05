@@ -63,7 +63,9 @@ export default async function OrdersPage() {
               data.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell>
-                    <p className="font-medium">{item.User?.firstName}</p>
+                    <p className="font-medium">
+                      {item.User?.firstName}
+                    </p>
                     <p className="hidden md:flex text-muted-foreground text-sm">
                       {item.User?.email}
                     </p>

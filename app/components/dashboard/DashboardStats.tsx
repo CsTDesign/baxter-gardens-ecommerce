@@ -1,16 +1,16 @@
-import prisma from "@/app/lib/db";
+import prisma from "@/app/lib/db"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 import {
   DollarSign,
   PartyPopper,
   ShoppingBag,
   User2
-} from "lucide-react";
+} from "lucide-react"
 
 async function getData() {
   const [

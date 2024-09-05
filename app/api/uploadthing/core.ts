@@ -1,11 +1,11 @@
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import {
   createUploadthing,
   type FileRouter
-} from "uploadthing/next";
-import { UploadThingError } from "uploadthing/server";
+} from "uploadthing/next"
+import { UploadThingError } from "uploadthing/server"
 
-const f = createUploadthing();
+const f = createUploadthing()
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
@@ -22,22 +22,22 @@ export const ourFileRouter = {
       const user = await getUser()
 
       // If you throw, the user will not be able to upload
-      if (!user || user.email !== "official.cstdesign@gmail.com") throw new UploadThingError("Unauthorized");
+      if (!user || user.email !== "official.cstdesign@gmail.com") throw new UploadThingError("Unauthorized")
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { userId: user.id };
+      return { userId: user.id }
     })
     .onUploadComplete(async ({
       metadata,
       file
     }) => {
       // This code RUNS ON YOUR SERVER after upload
-      console.log("Upload complete for userId:", metadata.userId);
+      console.log("Upload complete for userId:", metadata.userId)
 
-      console.log("file url", file.url);
+      console.log("file url", file.url)
 
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-      return { uploadedBy: metadata.userId };
+      return { uploadedBy: metadata.userId }
     }),
   bannerImageRoute: f({
     image: {
@@ -51,23 +51,23 @@ export const ourFileRouter = {
         const user = await getUser()
 
        // If you throw, the user will not be able to upload
-        if (!user || user.email !== "official.cstdesign@gmail.com") throw new UploadThingError("Unauthorized");
+        if (!user || user.email !== "official.cstdesign@gmail.com") throw new UploadThingError("Unauthorized")
 
        // Whatever is returned here is accessible in onUploadComplete as `metadata`
-        return { userId: user.id };
+        return { userId: user.id }
     })
     .onUploadComplete(async ({
       metadata,
       file
     }) => {
        // This code RUNS ON YOUR SERVER after upload
-        console.log("Upload complete for userId:", metadata.userId);
+        console.log("Upload complete for userId:", metadata.userId)
 
-        console.log("file url", file.url);
+        console.log("file url", file.url)
 
        // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-        return { uploadedBy: metadata.userId };
+        return { uploadedBy: metadata.userId }
     }),
-} satisfies FileRouter;
+} satisfies FileRouter
 
-export type OurFileRouter = typeof ourFileRouter;
+export type OurFileRouter = typeof ourFileRouter

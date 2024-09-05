@@ -1,4 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage
+} from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -25,7 +29,7 @@ export function UserDropDown({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="h-10 relative round-full w-10"
+          className="h-10 relative rounded-full w-10"
           variant="ghost"
         >
           <Avatar className="h-10 w-10">

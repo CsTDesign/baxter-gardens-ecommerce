@@ -1,14 +1,14 @@
-import { deleteBanner } from "@/app/actions";
-import { SubmitButton } from "@/app/components/SubmitButtons";
-import { Button } from "@/components/ui/button";
+import { deleteBanner } from "@/app/actions"
+import { SubmitButton } from "@/app/components/SubmitButtons"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle
-} from "@/components/ui/card";
-import Link from "next/link";
+} from "@/components/ui/card"
+import Link from "next/link"
 
 export default function DeleteBannerRoute({ params }: {
   params: {

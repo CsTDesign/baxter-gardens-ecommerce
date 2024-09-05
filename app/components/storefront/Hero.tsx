@@ -1,12 +1,12 @@
-import prisma from "@/app/lib/db";
+import prisma from "@/app/lib/db"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious
-} from "@/components/ui/carousel";
-import Image from "next/image";
+} from "@/components/ui/carousel"
+import Image from "next/image"
 
 async function getData() {
   const data = await prisma.banner.findMany({

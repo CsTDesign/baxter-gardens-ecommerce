@@ -4,7 +4,10 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { ShoppingCartIcon } from "lucide-react"
 import { UserDropDown } from "./UserDropdown"
 import { Button } from "@/components/ui/button"
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components"
+import {
+  LoginLink,
+  RegisterLink
+} from "@kinde-oss/kinde-auth-nextjs/components"
 import { redis } from "@/app/lib/redis"
 import { Cart } from "@/app/lib/interfaces"
 

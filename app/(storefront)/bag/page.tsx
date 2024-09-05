@@ -1,6 +1,7 @@
 import {
   checkOut,
-  delItem } from "@/app/actions"
+  delItem
+} from "@/app/actions"
 import {
   CheckoutButton,
   DeleteItem
