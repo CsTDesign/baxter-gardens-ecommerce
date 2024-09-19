@@ -67,6 +67,7 @@ export default async function ProductsRoute() {
                 <TableHead>Image</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Status</TableHead>
+                <TableHead>Quantity</TableHead>
                 <TableHead>Price</TableHead>
                 <TableHead>Date</TableHead>
                 <TableHead className="text-end">Actions</TableHead>
@@ -87,6 +88,7 @@ export default async function ProductsRoute() {
                     </TableCell>
                     <TableCell>{item.name}</TableCell>
                     <TableCell>{item.status}</TableCell>
+                    <TableCell>{item.stockQty}</TableCell>
                     <TableCell>${item.price}</TableCell>
                     <TableCell>
                       {

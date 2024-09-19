@@ -17,7 +17,9 @@ export async function Navbar() {
 
   const cart: Cart | null = await redis.get(`cart-${user?.id}`)
   
-  const total = cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0
+  const total = cart?.items.reduce(
+    (sum, item) => sum + item.quantity, 0
+  ) || 0
 
   return (
     <nav className="flex items-center justify-between lg:px-8 max-w-7xl mx-auto px-4 py-5 sm:px-6 w-full">

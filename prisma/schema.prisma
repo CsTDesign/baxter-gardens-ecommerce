@@ -19,6 +19,7 @@ model User {
   firstName    String
   lastName     String
   profileImage String
+  isAdmin      Boolean  @default(false)
   orders       Order[]
   createdAt    DateTime @default(now())
 }
@@ -28,6 +29,8 @@ model Product {
   name        String
   description String
   status      ProductStatus
+  quantity    Int
+  stockQty    Int
   price       Int
   images      String[]
   category    Category

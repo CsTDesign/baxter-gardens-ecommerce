@@ -1,6 +1,9 @@
 "use client"
 
-import { createProduct, editProduct } from "@/app/actions"
+import {
+  createProduct,
+  editProduct
+} from "@/app/actions"
 import { UploadDropzone } from "@/app/lib/uploadthing"
 import { Button } from "@/components/ui/button"
 import {
@@ -144,6 +147,17 @@ export function EditForm({ data }: iAppProps) {
                 type="number"
               />
               <p className="text-red-500">{fields.price.errors}</p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Label>Stock Quantity</Label>
+              <Input
+                defaultValue={data.stockQty}
+                key={fields.stockQty.key}
+                name={fields.stockQty.name}
+                placeholder="10"
+                type="number"
+              />
+              <p className="text-red-500">{fields.stockQty.errors}</p>
             </div>
             <div className="flex flex-col gap-3">
               <Label>Featured Product</Label>

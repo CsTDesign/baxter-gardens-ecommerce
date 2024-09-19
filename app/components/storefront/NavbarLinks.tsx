@@ -44,7 +44,7 @@ export function NavbarLinks() {
               cn(
                 location === item.href
                   ? "bg-primary/10"
-                  : "hover: bg-muted hover:bg-opacity-75",
+                  : "hover:bg-muted hover:bg-opacity-75",
                 "font-medium group p-2 rounded-md"
               )
             }

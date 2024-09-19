@@ -20,7 +20,7 @@ interface iAppProps {
   userImage: string
 }
 
-export function UserDropDown({
+export async function UserDropDown({
   email,
   name,
   userImage

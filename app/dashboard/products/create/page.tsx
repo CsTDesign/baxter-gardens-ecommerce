@@ -72,7 +72,11 @@ export default function ProductCreateRoute() {
       onSubmit={form.onSubmit}
     >
       <div className="flex gap-4 items-center">
-        <Button asChild size="icon" variant="outline">
+        <Button
+          asChild
+          size="icon"
+          variant="outline"
+        >
           <Link href="/dashboard/products">
             <ChevronLeft className="h-4 w-4" />
           </Link>
@@ -119,6 +123,17 @@ export default function ProductCreateRoute() {
                 type="number"
               />
               <p className="text-red-500">{fields.price.errors}</p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Label>Quantity</Label>
+              <Input
+                defaultValue={fields.stockQty.initialValue}
+                key={fields.stockQty.key}
+                name={fields.stockQty.name}
+                placeholder="10"
+                type="number"
+              />
+              <p className="text-red-500">{fields.stockQty.errors}</p>
             </div>
             <div className="flex flex-col gap-3">
               <Label>Featured Product</Label>
